@@ -1,0 +1,1234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CheckIfSsnExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ssn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckIfSsnExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckIfSsnExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertNewBloodBag">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ssn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertNewBloodBagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertNewBloodBagResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchForBloodBagByDateInterval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="d1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="d2" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchForBloodBagByDateIntervalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchForBloodBagByDateIntervalResult" type="tns:ArrayOfBloodBagMinimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBloodBagMinimal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BloodBagMinimal" nillable="true" type="tns:BloodBagMinimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BloodBagMinimal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SocialSecurityNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BloodBagId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateReceived" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasBeenProcesed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ToBeThrown" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupAndRh" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBloodBagById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bbid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBloodBagByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBloodBagByIdResult" type="tns:BloodBag" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BloodBag">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SocialSecurityNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rbc" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hgb" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hct" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mcv" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mchc" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Wbc" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Plt" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vsh" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tgp" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Group" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rh" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnticorpsHiv" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnticoprsHeB" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnticorpsHeC" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnticorpsLec" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnticorpsSif" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsGoodForUse" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchForBloodBagsBySsn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ssn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchForBloodBagsBySsnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchForBloodBagsBySsnResult" type="tns:ArrayOfBloodBagMinimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBloodBagAnalysis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ssn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBloodBagAnalysisResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateBloodBagAnalysis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bb" type="tns:BloodBag" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBloodBagAnalysisResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateBloodBagAnalysisByBloodBagId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bb" type="tns:BloodBag" />
+            <s:element minOccurs="0" maxOccurs="1" name="bbid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBloodBagAnalysisByBloodBagIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddNewBloodBagAnalysis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bb" type="tns:BloodBag" />
+            <s:element minOccurs="0" maxOccurs="1" name="bbid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewBloodBagAnalysisResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddNewDonor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dd" type="tns:DonorDetails" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DonorDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BankId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SocialSecurityNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="tns:Gender" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEmergencyDonor" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberOfDonations" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Occupation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Industry" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BirthDay" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DoctorId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Timestamp" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="MedicalHistory" type="tns:DonorMedicalHistory" />
+          <s:element minOccurs="0" maxOccurs="1" name="BloodGroup" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BloodRh" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Gender">
+        <s:restriction base="s:string">
+          <s:enumeration value="M" />
+          <s:enumeration value="F" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DonorMedicalHistory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DiseaseName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCured" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddNewDonorResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteDonor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ssn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDonorResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDonorsByDoctorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dd" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDonorsByDoctorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDonorsByDoctorIdResult" type="tns:ArrayOfDonorDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDonorDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DonorDetails" nillable="true" type="tns:DonorDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDonorsByKeyword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="key" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDonorsByKeywordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDonorsByKeywordResult" type="tns:ArrayOfDonorDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDonor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dd" type="tns:DonorDetails" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDonorResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDonorsByDataFilter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sdf" type="tns:SearchFilterDetails" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SearchFilterDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ssn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDonorsByDataFilterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDonorsByDataFilterResult" type="tns:ArrayOfDonorDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBankIdByUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBankIdByUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetBankIdByUsernameResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailsByBankId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bankid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailsByBankIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailsByBankIdResult" type="tns:YourDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="YourDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorsList" type="tns:ArrayOfDoctor" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDoctor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Doctor" nillable="true" type="tns:Doctor" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Doctor">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DoctorId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorStampId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ForgotYourPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fp" type="tns:ForgotPassword" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ForgotPassword">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecAnswer" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ForgotYourPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ForgotYourPasswordResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cpc" type="tns:ChangePassCredentials" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ChangePassCredentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OldPass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NewPass" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangePasswordResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cpc" type="tns:Credentials" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Credentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRequests">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRequestsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRequestsResult" type="tns:ArrayOfRequests" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRequests">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Requests" nillable="true" type="tns:Requests" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Requests">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RequestId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BloodGroup" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BloodRh" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBadBlood">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBadBloodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBadBloodResult" type="tns:ArrayOfBadBlood" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBadBlood">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BadBlood" nillable="true" type="tns:BadBlood" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BadBlood">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BadBloodBagId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BloodBagId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReceiveDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bankId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAddressResult" type="tns:Address" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RespondToRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RespondToRequestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ThrowBag">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bagId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThrowBagResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckIfSsnExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckIfSsnExists" />
+  </wsdl:message>
+  <wsdl:message name="CheckIfSsnExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckIfSsnExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertNewBloodBagSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertNewBloodBag" />
+  </wsdl:message>
+  <wsdl:message name="InsertNewBloodBagSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertNewBloodBagResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchForBloodBagByDateIntervalSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchForBloodBagByDateInterval" />
+  </wsdl:message>
+  <wsdl:message name="SearchForBloodBagByDateIntervalSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchForBloodBagByDateIntervalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBloodBagByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBloodBagById" />
+  </wsdl:message>
+  <wsdl:message name="GetBloodBagByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBloodBagByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchForBloodBagsBySsnSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchForBloodBagsBySsn" />
+  </wsdl:message>
+  <wsdl:message name="SearchForBloodBagsBySsnSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchForBloodBagsBySsnResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBloodBagAnalysisSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBloodBagAnalysis" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBloodBagAnalysisSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBloodBagAnalysisResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBloodBagAnalysisSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBloodBagAnalysis" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBloodBagAnalysisSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBloodBagAnalysisResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBloodBagAnalysisByBloodBagIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBloodBagAnalysisByBloodBagId" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBloodBagAnalysisByBloodBagIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBloodBagAnalysisByBloodBagIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewBloodBagAnalysisSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNewBloodBagAnalysis" />
+  </wsdl:message>
+  <wsdl:message name="AddNewBloodBagAnalysisSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNewBloodBagAnalysisResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewDonorSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNewDonor" />
+  </wsdl:message>
+  <wsdl:message name="AddNewDonorSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNewDonorResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDonorSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDonor" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDonorSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDonorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDonorsByDoctorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDonorsByDoctorId" />
+  </wsdl:message>
+  <wsdl:message name="GetDonorsByDoctorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDonorsByDoctorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDonorsByKeywordSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDonorsByKeyword" />
+  </wsdl:message>
+  <wsdl:message name="GetDonorsByKeywordSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDonorsByKeywordResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDonorSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDonor" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDonorSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDonorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDonorsByDataFilterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDonorsByDataFilter" />
+  </wsdl:message>
+  <wsdl:message name="GetDonorsByDataFilterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDonorsByDataFilterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBankIdByUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBankIdByUsername" />
+  </wsdl:message>
+  <wsdl:message name="GetBankIdByUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBankIdByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByBankIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailsByBankId" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByBankIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailsByBankIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ForgotYourPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ForgotYourPassword" />
+  </wsdl:message>
+  <wsdl:message name="ForgotYourPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ForgotYourPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRequestsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRequests" />
+  </wsdl:message>
+  <wsdl:message name="GetRequestsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBadBloodSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBadBlood" />
+  </wsdl:message>
+  <wsdl:message name="GetBadBloodSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBadBloodResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="RespondToRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:RespondToRequest" />
+  </wsdl:message>
+  <wsdl:message name="RespondToRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:RespondToRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThrowBagSoapIn">
+    <wsdl:part name="parameters" element="tns:ThrowBag" />
+  </wsdl:message>
+  <wsdl:message name="ThrowBagSoapOut">
+    <wsdl:part name="parameters" element="tns:ThrowBagResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BloodBankWSSoap">
+    <wsdl:operation name="CheckIfSsnExists">
+      <wsdl:input message="tns:CheckIfSsnExistsSoapIn" />
+      <wsdl:output message="tns:CheckIfSsnExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewBloodBag">
+      <wsdl:input message="tns:InsertNewBloodBagSoapIn" />
+      <wsdl:output message="tns:InsertNewBloodBagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchForBloodBagByDateInterval">
+      <wsdl:input message="tns:SearchForBloodBagByDateIntervalSoapIn" />
+      <wsdl:output message="tns:SearchForBloodBagByDateIntervalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBloodBagById">
+      <wsdl:input message="tns:GetBloodBagByIdSoapIn" />
+      <wsdl:output message="tns:GetBloodBagByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchForBloodBagsBySsn">
+      <wsdl:input message="tns:SearchForBloodBagsBySsnSoapIn" />
+      <wsdl:output message="tns:SearchForBloodBagsBySsnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBloodBagAnalysis">
+      <wsdl:input message="tns:DeleteBloodBagAnalysisSoapIn" />
+      <wsdl:output message="tns:DeleteBloodBagAnalysisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBloodBagAnalysis">
+      <wsdl:input message="tns:UpdateBloodBagAnalysisSoapIn" />
+      <wsdl:output message="tns:UpdateBloodBagAnalysisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBloodBagAnalysisByBloodBagId">
+      <wsdl:input message="tns:UpdateBloodBagAnalysisByBloodBagIdSoapIn" />
+      <wsdl:output message="tns:UpdateBloodBagAnalysisByBloodBagIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewBloodBagAnalysis">
+      <wsdl:input message="tns:AddNewBloodBagAnalysisSoapIn" />
+      <wsdl:output message="tns:AddNewBloodBagAnalysisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewDonor">
+      <wsdl:input message="tns:AddNewDonorSoapIn" />
+      <wsdl:output message="tns:AddNewDonorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDonor">
+      <wsdl:input message="tns:DeleteDonorSoapIn" />
+      <wsdl:output message="tns:DeleteDonorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByDoctorId">
+      <wsdl:input message="tns:GetDonorsByDoctorIdSoapIn" />
+      <wsdl:output message="tns:GetDonorsByDoctorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByKeyword">
+      <wsdl:input message="tns:GetDonorsByKeywordSoapIn" />
+      <wsdl:output message="tns:GetDonorsByKeywordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDonor">
+      <wsdl:input message="tns:UpdateDonorSoapIn" />
+      <wsdl:output message="tns:UpdateDonorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByDataFilter">
+      <wsdl:input message="tns:GetDonorsByDataFilterSoapIn" />
+      <wsdl:output message="tns:GetDonorsByDataFilterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBankIdByUsername">
+      <wsdl:input message="tns:GetBankIdByUsernameSoapIn" />
+      <wsdl:output message="tns:GetBankIdByUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsByBankId">
+      <wsdl:input message="tns:GetDetailsByBankIdSoapIn" />
+      <wsdl:output message="tns:GetDetailsByBankIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ForgotYourPassword">
+      <wsdl:input message="tns:ForgotYourPasswordSoapIn" />
+      <wsdl:output message="tns:ForgotYourPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input message="tns:ChangePasswordSoapIn" />
+      <wsdl:output message="tns:ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequests">
+      <wsdl:input message="tns:GetRequestsSoapIn" />
+      <wsdl:output message="tns:GetRequestsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBadBlood">
+      <wsdl:input message="tns:GetBadBloodSoapIn" />
+      <wsdl:output message="tns:GetBadBloodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <wsdl:input message="tns:GetAddressSoapIn" />
+      <wsdl:output message="tns:GetAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RespondToRequest">
+      <wsdl:input message="tns:RespondToRequestSoapIn" />
+      <wsdl:output message="tns:RespondToRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThrowBag">
+      <wsdl:input message="tns:ThrowBagSoapIn" />
+      <wsdl:output message="tns:ThrowBagSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BloodBankWSSoap" type="tns:BloodBankWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckIfSsnExists">
+      <soap:operation soapAction="http://tempuri.org/CheckIfSsnExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewBloodBag">
+      <soap:operation soapAction="http://tempuri.org/InsertNewBloodBag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchForBloodBagByDateInterval">
+      <soap:operation soapAction="http://tempuri.org/SearchForBloodBagByDateInterval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBloodBagById">
+      <soap:operation soapAction="http://tempuri.org/GetBloodBagById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchForBloodBagsBySsn">
+      <soap:operation soapAction="http://tempuri.org/SearchForBloodBagsBySsn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBloodBagAnalysis">
+      <soap:operation soapAction="http://tempuri.org/DeleteBloodBagAnalysis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBloodBagAnalysis">
+      <soap:operation soapAction="http://tempuri.org/UpdateBloodBagAnalysis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBloodBagAnalysisByBloodBagId">
+      <soap:operation soapAction="http://tempuri.org/UpdateBloodBagAnalysisByBloodBagId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewBloodBagAnalysis">
+      <soap:operation soapAction="http://tempuri.org/AddNewBloodBagAnalysis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewDonor">
+      <soap:operation soapAction="http://tempuri.org/AddNewDonor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDonor">
+      <soap:operation soapAction="http://tempuri.org/DeleteDonor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByDoctorId">
+      <soap:operation soapAction="http://tempuri.org/GetDonorsByDoctorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByKeyword">
+      <soap:operation soapAction="http://tempuri.org/GetDonorsByKeyword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDonor">
+      <soap:operation soapAction="http://tempuri.org/UpdateDonor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByDataFilter">
+      <soap:operation soapAction="http://tempuri.org/GetDonorsByDataFilter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBankIdByUsername">
+      <soap:operation soapAction="http://tempuri.org/GetBankIdByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsByBankId">
+      <soap:operation soapAction="http://tempuri.org/GetDetailsByBankId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForgotYourPassword">
+      <soap:operation soapAction="http://tempuri.org/ForgotYourPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequests">
+      <soap:operation soapAction="http://tempuri.org/GetRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBadBlood">
+      <soap:operation soapAction="http://tempuri.org/GetBadBlood" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <soap:operation soapAction="http://tempuri.org/GetAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RespondToRequest">
+      <soap:operation soapAction="http://tempuri.org/RespondToRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThrowBag">
+      <soap:operation soapAction="http://tempuri.org/ThrowBag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BloodBankWSSoap12" type="tns:BloodBankWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckIfSsnExists">
+      <soap12:operation soapAction="http://tempuri.org/CheckIfSsnExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewBloodBag">
+      <soap12:operation soapAction="http://tempuri.org/InsertNewBloodBag" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchForBloodBagByDateInterval">
+      <soap12:operation soapAction="http://tempuri.org/SearchForBloodBagByDateInterval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBloodBagById">
+      <soap12:operation soapAction="http://tempuri.org/GetBloodBagById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchForBloodBagsBySsn">
+      <soap12:operation soapAction="http://tempuri.org/SearchForBloodBagsBySsn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBloodBagAnalysis">
+      <soap12:operation soapAction="http://tempuri.org/DeleteBloodBagAnalysis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBloodBagAnalysis">
+      <soap12:operation soapAction="http://tempuri.org/UpdateBloodBagAnalysis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBloodBagAnalysisByBloodBagId">
+      <soap12:operation soapAction="http://tempuri.org/UpdateBloodBagAnalysisByBloodBagId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewBloodBagAnalysis">
+      <soap12:operation soapAction="http://tempuri.org/AddNewBloodBagAnalysis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewDonor">
+      <soap12:operation soapAction="http://tempuri.org/AddNewDonor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDonor">
+      <soap12:operation soapAction="http://tempuri.org/DeleteDonor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByDoctorId">
+      <soap12:operation soapAction="http://tempuri.org/GetDonorsByDoctorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByKeyword">
+      <soap12:operation soapAction="http://tempuri.org/GetDonorsByKeyword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDonor">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDonor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDonorsByDataFilter">
+      <soap12:operation soapAction="http://tempuri.org/GetDonorsByDataFilter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBankIdByUsername">
+      <soap12:operation soapAction="http://tempuri.org/GetBankIdByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsByBankId">
+      <soap12:operation soapAction="http://tempuri.org/GetDetailsByBankId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForgotYourPassword">
+      <soap12:operation soapAction="http://tempuri.org/ForgotYourPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequests">
+      <soap12:operation soapAction="http://tempuri.org/GetRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBadBlood">
+      <soap12:operation soapAction="http://tempuri.org/GetBadBlood" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <soap12:operation soapAction="http://tempuri.org/GetAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RespondToRequest">
+      <soap12:operation soapAction="http://tempuri.org/RespondToRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThrowBag">
+      <soap12:operation soapAction="http://tempuri.org/ThrowBag" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BloodBankWS">
+    <wsdl:port name="BloodBankWSSoap" binding="tns:BloodBankWSSoap">
+      <soap:address location="http://localhost/BBWS/BloodBankWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BloodBankWSSoap12" binding="tns:BloodBankWSSoap12">
+      <soap12:address location="http://localhost/BBWS/BloodBankWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
